@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --anim-duration: 0.8s;
+  --anim-fill-mode: forwards;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+  filter: blur(0px);
+  animation-name: container-div-fadein;
+  animation-delay: 3s;
+  animation-duration: var(--anim-duration);
+  animation-fill-mode: var(--anim-fill-mode);
+}
+
+@keyframes container-div-fadein {
+  to {
+    opacity: 1;
+  }
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 17px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 0.625rem;
+  position: relative;
+  transition: flex 0.7s ease-in;
+  top: 5rem;
+  opacity: 0;
+  animation-name: panel-fadein;
+  animation-delay: 3.5s;
+  animation-duration: var(--anim-duration);
+  animation-fill-mode: var(--anim-fill-mode);
+}
+
+.panel:hover {
+  box-shadow: 0 0 1.5rem 1rem white;
+}
+
+@keyframes panel-fadein {
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5;
+  box-shadow: 2rem 2rem 2rem 0 white, -2rem -2rem 2rem 0 white;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+.bg {
+  background: url('https://i.postimg.cc/3x9WRKF6/FJ8-D8v4a-UAEtm-H6.jpg') no-repeat center center/cover;
+  position: absolute;
+  top: -30;
+  left: -30;
+  width: calc(100vw + 60px);
+  height: calc(100vh + 60px);
+  z-index: -1;
+  filter: blur(0px);
+}
+
+.loading-text {
+  font-size: 50px;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 0%);
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
